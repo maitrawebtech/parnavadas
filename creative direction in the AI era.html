@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Direction in the AI Era | Parnava Das</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary: #2A5BDA;
+            --accent: #00F5E9;
+            --dark: #0A0A14;
+            --light: #F5F0EC;
+            --gray: #3A3A4E;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 20, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h3 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-circle {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+.profile-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    transition: var(--transition);
+}
+
+.profile-photo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 245, 233, 0.5);
+}
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        /* Blog Hero */
+        .blog-hero {
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .blog-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            color: rgba(245, 240, 236, 0.8);
+        }
+
+        .blog-meta div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blog-meta i {
+            color: var(--accent);
+        }
+
+        .blog-hero-image {
+            margin: 60px auto;
+            max-width: 900px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .blog-hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .ai-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(42, 91, 218, 0.3), rgba(0, 245, 233, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .blog-hero-image:hover .ai-overlay {
+            opacity: 1;
+        }
+
+        .ai-overlay-text {
+            background: rgba(10, 10, 20, 0.9);
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid var(--accent);
+        }
+
+        /* Blog Content */
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+        }
+
+        .blog-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: rgba(245, 240, 236, 0.9);
+        }
+
+        .blog-content h2 {
+            font-size: 2.2rem;
+            margin: 60px 0 30px;
+            color: var(--accent);
+        }
+
+        .blog-content h3 {
+            font-size: 1.8rem;
+            margin: 50px 0 25px;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid var(--accent);
+            padding-left: 30px;
+            margin: 40px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: rgba(245, 240, 236, 0.8);
+        }
+
+        .blog-image {
+            margin: 40px 0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: rgba(245, 240, 236, 0.6);
+        }
+
+        .blog-highlight {
+            background: rgba(0, 245, 233, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .blog-highlight h4 {
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .ai-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .ai-process-step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .ai-process-step:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .ai-process-step h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .ai-process-step h4 i {
+            font-size: 1.5rem;
+        }
+
+        /* Tool Comparison */
+        .tool-comparison {
+            margin: 50px 0;
+            overflow-x: auto;
+        }
+
+        .tool-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tool-table th, .tool-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-table th {
+            background: rgba(0, 245, 233, 0.1);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .tool-table tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tool-rating {
+            color: var(--accent);
+        }
+
+        /* Blog Navigation */
+        .blog-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--light);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-nav-btn:hover {
+            background: rgba(0, 245, 233, 0.1);
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 20, 0.9);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-about h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-about p {
+            color: rgba(245, 240, 236, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        .footer-links h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(245, 240, 236, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(245, 240, 236, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .blog-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .ai-process {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .blog-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-navigation {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+             <div class="logo">
+                <img src="pic.jfif" alt="Parnava Das" class="profile-photo">
+                <h3>Parnava Das</h3>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#journey">Journey</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#press">Press</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-btn">Let's Connect</button>
+        </div>
+    </header>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="blog-hero-content">
+                <h1>Creative Direction in the AI Era</h1>
+                <div class="blog-meta">
+                    <div>
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>July 22, 2024</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <span>10 min read</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-tag"></i>
+                        <span>AI & Design</span>
+                    </div>
+                </div>
+                <div class="blog-hero-image">
+                    <img src="https://media.istockphoto.com/id/1357676694/photo/metaverse-and-future-digital-technology-man-wearing-vr-glasses-hand-touching-virtual-global.jpg?s=612x612&w=0&k=20&c=islTgISkzYQmaQanta49mwCC71aTYL8MiPNckXymCeY=" alt="AI Creative Direction">
+                    <div class="ai-overlay">
+                        <div class="ai-overlay-text">AI-Generated Concept Visualization</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <p>As Creative Director at Maitra Web Tech, I've navigated the seismic shifts brought by artificial intelligence to our industry. What began as curiosity about Midjourney prototypes has evolved into a fundamental rethinking of how we approach creative direction. This isn't about replacing designers—it's about augmenting human creativity with machine intelligence to achieve unprecedented results.</p>
+
+        <h2>1. The New Creative Workflow</h2>
+        <p>Traditional creative workflows followed linear paths: brief → ideation → execution → delivery. AI transforms this into a dynamic, iterative cycle where each phase informs and enhances the others.</p>
+
+        <div class="ai-process">
+            <div class="ai-process-step">
+                <h4><i class="fas fa-lightbulb"></i> Augmented Ideation</h4>
+                <p>We use AI to generate hundreds of concept variations in minutes, not days. At Maitra Web Tech, our "Concept Storm" sessions combine human intuition with machine-generated possibilities.</p>
+            </div>
+            <div class="ai-process-step">
+                <h4><i class="fas fa-cogs"></i> Rapid Prototyping</h4>
+                <p>AI tools transform sketches into high-fidelity mockups instantly. What took weeks now happens in hours, allowing more time for refinement and user testing.</p>
+            </div>
+            <div class="ai-process-step">
+                <h4><i class="fas fa-chart-line"></i> Predictive Refinement</h4>
+                <p>Machine learning analyzes user engagement patterns to predict which creative directions will perform best before launch.</p>
+            </div>
+        </div>
+
+        <div class="blog-highlight">
+            <h4>Case Study: NeuroTech Brand Refresh</h4>
+            <p>For NeuroTech's rebrand, we used AI to generate 1,200 logo concepts in 48 hours. After clustering similar ideas, our team refined the top 12 directions. The final selection achieved 89% positive feedback in testing—our highest ever.</p>
+        </div>
+
+        <h2>2. AI as Creative Partner</h2>
+        <p>The most successful creative directors will be those who learn to "direct" AI tools as they would human creatives. This requires:</p>
+
+        <div class="blog-image">
+            <img src="https://media.istockphoto.com/id/1892817639/photo/artificial-intelligence-hands-on-of-robot-and-human-touch-on-ai-powered-networks-brain-data.jpg?s=612x612&w=0&k=20&c=vyswi4U9SSHCGlXcVJPfYbTrCO-p6VYtMwDE8HvZ0Ok=" alt="Human-AI Collaboration">
+            <div class="image-caption">The new creative team: human intuition and machine intelligence</div>
+        </div>
+
+        <ul style="margin-bottom: 30px; padding-left: 30px; color: rgba(245, 240, 236, 0.9);">
+            <li style="margin-bottom: 15px;"><strong>Precision prompting</strong> - Crafting inputs that yield useful outputs</li>
+            <li style="margin-bottom: 15px;"><strong>Creative curation</strong> - Identifying the most promising directions</li>
+            <li style="margin-bottom: 15px;"><strong>Strategic augmentation</strong> - Knowing when to use AI and when human touch is essential</li>
+        </ul>
+
+        <blockquote>
+            "AI won't replace creative directors, but creative directors who use AI will replace those who don't. At Maitra Web Tech, we're training our team in 'prompt craftsmanship' as a core skill." — Parnava Das
+        </blockquote>
+
+        <h2>3. Essential AI Tools for Creatives</h2>
+        <p>After testing hundreds of tools, these have become indispensable in our workflow at Maitra Web Tech:</p>
+
+        <div class="tool-comparison">
+            <table class="tool-table">
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Use Case</th>
+                        <th>Our Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Midjourney v6</td>
+                        <td>Concept visualization</td>
+                        <td class="tool-rating">★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td>Adobe Firefly</td>
+                        <td>Asset generation</td>
+                        <td class="tool-rating">★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td>Runway ML</td>
+                        <td>Video editing</td>
+                        <td class="tool-rating">★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td>Figma AI</td>
+                        <td>Prototyping</td>
+                        <td class="tool-rating">★★★☆☆</td>
+                    </tr>
+                    <tr>
+                        <td>ChatGPT-4o</td>
+                        <td>Copywriting & strategy</td>
+                        <td class="tool-rating">★★★★★</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>4. Maintaining Human-Centric Design</h2>
+        <p>As we integrate AI deeper into our process at Maitra Web Tech, we've established guardrails to ensure our work remains fundamentally human:</p>
+
+        <div class="ai-process">
+            <div class="ai-process-step">
+                <h4><i class="fas fa-eye"></i> The Authenticity Test</h4>
+                <p>Does this feel genuinely human-created? We reject anything that feels "off" or synthetic, even if technically impressive.</p>
+            </div>
+            <div class="ai-process-step">
+                <h4><i class="fas fa-heart"></i> Emotional Resonance</h4>
+                <p>AI struggles with nuanced emotion. We always enhance AI output with human emotional intelligence.</p>
+            </div>
+            <div class="ai-process-step">
+                <h4><i class="fas fa-fingerprint"></i> Brand Fingerprint</h4>
+                <p>Every brand has unique DNA. We train custom models on each client's existing assets to maintain consistency.</p>
+            </div>
+        </div>
+
+        <h2>5. The Future Creative Team</h2>
+        <p>At Maitra Web Tech, we're restructuring our creative teams around AI collaboration:</p>
+
+        <div class="blog-image">
+            <img src="https://media.istockphoto.com/id/1263348490/photo/business-network-concept-group-of-businessperson-teamwork-human-resources.jpg?s=612x612&w=0&k=20&c=ES5EWCAibvWwrr_F16cgBktoHFwr09ds1NJl-8ZAly8=" alt="Future Creative Team">
+            <div class="image-caption">Our AI-augmented creative team structure at Maitra Web Tech</div>
+        </div>
+
+        <p>Rather than fearing displacement, we're seeing exciting new roles emerge: <strong>AI Art Directors</strong> who specialize in guiding generative tools, <strong>Creative Data Scientists</strong> who interpret AI insights, and <strong>Hybrid Designers</strong> who seamlessly move between digital and physical creation.</p>
+
+        <div class="blog-highlight">
+            <h4>Key Insight</h4>
+            <p>The most valuable creative professionals in the AI era won't be those who can do what AI does, but those who can do what AI cannot—think conceptually, make emotional connections, and apply cultural context.</p>
+        </div>
+
+        <p>As we stand at this inflection point, I'm more excited than ever about creative direction's future. AI isn't replacing creativity—it's expanding its boundaries. At Maitra Web Tech, we're committed to pioneering this new frontier while keeping human experience at the center of everything we create.</p>
+
+        <div class="blog-navigation">
+            <a href="future.html" class="blog-nav-btn">
+                <i class="fas fa-arrow-left"></i>
+                Previous: Future of Brand Experiences
+            </a>
+            <a href="masters of visual storytelling.html" class="blog-nav-btn">
+                Next: Masters of Visual Storytelling
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3>Parnava Das</h3>
+                    <p>Creative Director at Maitra Web Tech, transforming ideas into digital masterpieces through innovative design, compelling storytelling, and technical excellence.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/tamalart_23" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="index.html#journey">Journey</a></li>
+                        <li><a href="index.html#skills">Skills</a></li>
+                        <li><a href="index.html#press">Press</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://ishanmaitra.github.io/ishanmaitra/top%20web%20design%20trends%20of%202024.html">Web Design Trends of 2024</a></li>
+                        <li><a href="https://ishanmaitra.github.io/ishanmaitra/essential%20tools%20for%20modern%20developers.html">Tools for Modern Devs.</a></li>
+                        <li><a href="https://ishanmaitra.github.io/ishanmaitra/ux%20conversion%20principles.html">UX Conversion Principals</a></li>
+                        <li><a href="https://maitrawebtech.github.io/maitrawebtech">Maitra Web Tech</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 TechCrunch. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Make navigation button link to contact section
+        document.querySelector('.nav-btn').addEventListener('click', function() {
+            window.location.href = 'index.html#contact';
+        });
+
+        // Animate AI overlay on hero image
+        const aiOverlay = document.querySelector('.ai-overlay');
+        if (aiOverlay) {
+            setTimeout(() => {
+                aiOverlay.style.opacity = '0.8';
+                setTimeout(() => {
+                    aiOverlay.style.opacity = '0';
+                }, 3000);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

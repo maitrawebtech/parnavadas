@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webby Award Winner Interview | Parnava Das | Awwwards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">   
+ <style>
+        :root {
+            --primary: #6A0DAD; /* Deep purple */
+            --accent: #FFD700; /* Gold */
+            --dark: #121212; /* Rich black */
+            --light: #F8F8F8; /* Bright white */
+            --gray: #4A4A4A; /* Medium gray */
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* 3D Trophy Background */
+        #trophy-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(18, 18, 18, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+.profile-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent);
+    transition: var(--transition);
+}
+
+.profile-photo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 245, 233, 0.5);
+}
+        .nav-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        /* Interview Hero */
+        .interview-hero {
+            padding: 180px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .awards-logo {
+            width: 200px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+        }
+
+        .interview-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .interview-hero h2 {
+            font-size: 1.5rem;
+            color: rgba(248, 248, 248, 0.8);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            color: rgba(248, 248, 248, 0.8);
+            margin-bottom: 60px;
+        }
+
+        .hero-meta div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-meta i {
+            color: var(--accent);
+        }
+
+        .hero-image {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: 0 20px 50px rgba(106, 13, 173, 0.3);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Interview Content */
+        .interview-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px 100px;
+        }
+
+        .interview-section {
+            margin-bottom: 80px;
+        }
+
+        .question {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .question:before {
+            content: "Q";
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(106, 13, 173, 0.3);
+        }
+
+        .answer {
+            font-size: 1.1rem;
+            color: rgba(248, 248, 248, 0.9);
+            margin-bottom: 30px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .answer:before {
+            content: "A";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(255, 215, 0, 0.2);
+        }
+
+        .project-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(106, 13, 173, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .project-content p {
+            color: rgba(248, 248, 248, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .award-quote {
+            background: rgba(106, 13, 173, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 30px;
+            margin: 50px 0;
+            border-radius: 0 15px 15px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .award-quote:before {
+            content: """;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 4rem;
+            color: rgba(255, 215, 0, 0.1);
+            font-family: serif;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(18, 18, 18, 0.95);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--light);
+        }
+
+        .copyright {
+            color: rgba(248, 248, 248, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .interview-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .question {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .interview-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .interview-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .question {
+                font-size: 1.3rem;
+                padding-left: 30px;
+            }
+            
+            .answer {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 3D Trophy Background -->
+    <div id="trophy-container"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://assets.awwwards.com/assets/images/logo.svg" alt="Awwwards" style="height: 30px;">
+            </div>
+            <button class="nav-btn">View Portfolio</button>
+        </div>
+    </header>
+
+    <!-- Interview Hero -->
+    <section class="interview-hero">
+        <div class="container">
+            <img src="data:image/png;base64,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" alt="Webby Awards" class="awards-logo">
+            <h1>Webby Award Winner Interview</h1>
+            <h2>Parnava Das of Maitra Web Tech on Designing Award-Winning Digital Experiences</h2>
+            <div class="hero-meta">
+                <div>
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>March 15, 2024</span>
+                </div>
+                <div>
+                    <i class="fas fa-clock"></i>
+                    <span>15 min read</span>
+                </div>
+                <div>
+                    <i class="fas fa-trophy"></i>
+                    <span>Best Visual Design</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="pic.jfif" alt="Parnava Das">
+            </div>
+        </div>
+    </section>
+
+    <!-- Interview Content -->
+    <section class="interview-content">
+        <div class="container">
+            <div class="interview-section">
+                <div class="question">Congratulations on your Webby Award! How does it feel to be recognized at this level?</div>
+                <div class="answer">
+                    Thank you! It's incredibly humbling. At Maitra Web Tech, we've always believed in pushing boundaries, but to have that recognized by the Webbys—an institution that celebrates internet excellence—is surreal. The award validates our approach to design as an emotional experience rather than just visual aesthetics.
+                </div>
+            </div>
+
+            <div class="interview-section">
+                <div class="question">Your winning project stood out for its "cinematic web experience." Can you explain that concept?</div>
+                <div class="answer">
+                    Traditional websites are static—you scroll, you click. We asked: what if navigating a website felt like moving through a beautifully directed film? We applied principles from cinematography—lighting, pacing, scene transitions—to web interactions. For example, scrolling triggers camera-like movements through 3D space, and hover states reveal narrative elements. It's web design as storytelling medium.
+                </div>
+                
+                <div class="project-showcase">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://www.impactplus.com/hubfs/Fensea.jpg" alt="Project 1">
+                        </div>
+                        <div class="project-content">
+                            <h4>NeuroTech Dashboard</h4>
+                            <p>Webby Award winner for Best Visual Design</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="WhatsApp Image 2025-07-06 at 12.26.56 PM.jpeg" alt="Project 2">
+                        </div>
+                        <div class="project-content">
+                            <h4>Maitra Web Tech</h4>
+                            <p>Web Development Category</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-section">
+                <div class="question">What technical innovations made this possible?</div>
+                <div class="answer">
+                    Three key technologies: First, Three.js for GPU-accelerated 3D that works across devices. Second, GSAP for buttery smooth animations synchronized to scroll. Third, a custom "motion choreography" system that orchestrates hundreds of micro-interactions into a cohesive flow. The real magic was making this complexity feel effortless to the user.
+                </div>
+                
+                <div class="award-quote">
+                    "Parnava's work represents the next evolution of web design—where technology serves emotion rather than dominates it. The jury was unanimous in their decision." — Webby Awards Jury Statement
+                </div>
+            </div>
+
+            <div class="interview-section">
+                <div class="question">How does your creative process differ from traditional web design?</div>
+                <div class="answer">
+                    We start with mood reels instead of mood boards—short films that capture the emotional journey. Our wireframes include motion notes. And we prototype early with real content because timing affects emotional impact. At Maitra Web Tech, our designers storyboard interactions like film directors, considering pacing and dramatic tension.
+                </div>
+            </div>
+
+            <div class="interview-section">
+                <div class="question">What advice would you give to designers aspiring to this level?</div>
+                <div class="answer">
+                    Master the fundamentals, then forget them. Learn cinema. Study how Spielberg directs attention or how Villeneuve builds atmosphere. Then translate those techniques to the web. Tools matter less than vision—our award-winning project used the same basic tech stack as any site, just with more intention behind every decision.
+                </div>
+            </div>
+
+            <div class="interview-section">
+                <div class="question">What's next for Maitra Web Tech?</div>
+                <div class="answer">
+                    We're developing "Maitra Jarvis"—an AI interface that adapts not just content but entire interaction models to individual users. Imagine a website that reorganizes its navigation based on your behavior patterns. It's risky, it's ambitious, and it might just win us another Webby!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Parnava Das</div>
+            <div class="footer-links">
+                <a href="https://maitrawebtech.github.io/maitrawebtech/">Maitra Web Tech</a>
+                <a href="index.html">View Portfolio</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Interview by Awwwards. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 3D Trophy Animation
+        const container = document.getElementById('trophy-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
+        
+        // Create trophy geometry
+        const trophyGeometry = new THREE.ConeGeometry(1, 2, 4);
+        const trophyMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0xFFD700,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const trophy = new THREE.Mesh(trophyGeometry, trophyMaterial);
+        scene.add(trophy);
+        
+        // Create floating particles
+        const particles = [];
+        const particleGeometry = new THREE.SphereGeometry(0.1, 8, 8);
+        const particleMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0x6A0DAD,
+            transparent: true,
+            opacity: 0.6
+        });
+        
+        for (let i = 0; i < 100; i++) {
+            const particle = new THREE.Mesh(particleGeometry, particleMaterial);
+            particle.position.x = (Math.random() - 0.5) * 20;
+            particle.position.y = (Math.random() - 0.5) * 20;
+            particle.position.z = (Math.random() - 0.5) * 20;
+            particle.speed = {
+                x: (Math.random() - 0.5) * 0.01,
+                y: (Math.random() - 0.5) * 0.01,
+                z: (Math.random() - 0.5) * 0.01
+            };
+            scene.add(particle);
+            particles.push(particle);
+        }
+        
+        camera.position.z = 5;
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            trophy.rotation.x += 0.005;
+            trophy.rotation.y += 0.01;
+            
+            particles.forEach(particle => {
+                particle.position.x += particle.speed.x * 2;
+                particle.position.y += particle.speed.y * 2;
+                particle.position.z += particle.speed.z * 2;
+                
+                if (Math.abs(particle.position.x) > 10) particle.speed.x *= -1;
+                if (Math.abs(particle.position.y) > 10) particle.speed.y *= -1;
+                if (Math.abs(particle.position.z) > 10) particle.speed.z *= -1;
+            });
+            
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        // GSAP Animations
+        gsap.utils.toArray('.interview-section').forEach((section, i) => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: i * 0.1
+            });
+        });
+    </script>
+</body>
+</html>
